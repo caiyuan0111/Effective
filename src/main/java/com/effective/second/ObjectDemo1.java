@@ -9,6 +9,6 @@ package com.effective.second;
 public class ObjectDemo1 {
 
     public static void main(String[] args) {
-        System.out.println("test git commit");
+        System.out.println("test git commit 2");
     }
 }
