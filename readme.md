@@ -20,6 +20,8 @@ ___粗斜体文本___
 
 ##git study
 git is distributed version control system
+git is free software distributed under the GPL
+
 
 
 
