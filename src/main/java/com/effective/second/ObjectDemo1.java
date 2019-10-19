@@ -10,5 +10,6 @@ public class ObjectDemo1 {
 
     public static void main(String[] args) {
         System.out.println("test git commit 2");
+        System.out.println("used to test git reset");
     }
 }
