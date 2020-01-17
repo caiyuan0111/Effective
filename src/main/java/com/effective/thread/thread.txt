@@ -1,0 +1,67 @@
+线程状态：
+    1，创建线程实例后，进入新生态（NEW），这时线程还没准备好
+
+    2，线程类调用start()方法后，状态从新生态（NEW)进入可运行态（Runnable），意味着线程可以运行了，
+      但是要等待java线程调度器，线程调度器会以FIFO（先进先出）的方式从线程池中挑选一个线程
+
+    3，阻塞状态（blocked）：有很多情况会导致线程进入阻塞状态，如I/O操作、等待网络连接等，此外，
+       优先级高的线程可以将当前运行的线程变为blocked状态
+
+    4，等待状态（Waiting）：线程可以通过调用wait()进入Waiting状态，当其他线程调用notify()时，它将回到Runnable状态
+
+    5，Terminated：start()方法退出时，线程进入terminated状态
+
+为什么使用多线程
+    使用线程让java应用程序同时做多件事情，从而加快运行速度。
+    专业术语：线程可以帮你在java程序中实现并行操作
+
+需要记住的点：
+    1，多线程可以更好的利用CPU
+    2，提高响应性，提高用户体验
+    3，减少响应时间
+    4，同时为多个客户端提供服务
+
+创建线程的方式：
+    1，继承Thread类
+    2，实现Runnable接口
+    3，使用Callable和Future创建线程
+    4，使用线程池，如Executor框架
+
+实现Callable接口的call方法，用FutureTask类包裹Callable对象，然后再用Thread类包裹FutureTask类，并调用start()方法
+
+class MyCallable implements Callable{
+    @override
+    public Integer call(){
+        //实现内容
+    }
+}
+
+MyCallable callable = new MyCallable();
+FutureTask task = new FutureTask(callable);
+Thread thread = new Thread(task);
+thread.start();
+
+
+
+同步：
+    同步指多线程的同步，synchronized 到代码块在同一时刻只能被一个线程执行
+
+为什么要同步：
+    代码在多线程环境下执行，那么在多个线程充共享的对象之间需要同步，已避免破坏状态
+
+
+序列化:
+    java中序列化是一种机制，可以将对象的状态写入到字节流中，相反，反序列化操作将字节流转换成对象
+
+    序列化时，调用ObjectOutputStream 的writeObject()方法
+    反序列化时，调用ObjectInputStream 的readObject()方法
+
+需记住的重点：
+    1，如果父类实现了 Serializable接口，那么子类不需要实现了
+    2，只有非静态数据成员可以在序列化过程中保存下来
+    3，静态数据成员和临时数据成员不会在序列化过程中保存下来，所以，如果不想保存某个非静态成员的，可以设置成 transient
+    4，反序列化的过程中，不会调用对象的构造函数
+    5，关联对象必须实现 Serializable 接口
+
+
+

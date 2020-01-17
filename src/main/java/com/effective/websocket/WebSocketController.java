@@ -33,15 +33,15 @@ public class WebSocketController {
     }
 
     @ResponseBody
-    @RequestMapping("/socket/push/{cid}")
-    public Result pushToWeb(@PathVariable String cid, String message) {
+    @RequestMapping("/socket/push")
+    public Result pushToWeb(String message) {
         try {
-            WebSocketServer.sendInfo(message, cid);
+            WebSocketServer.sendInfo(message, "1212");
         } catch (IOException e) {
             e.printStackTrace();
-            return new Result(500, cid + "#" + e.getMessage());
+            return new Result(500, e.getMessage());
         }
-        return new Result(200, cid);
+        return new Result(200, "1212");
     }
 
 }

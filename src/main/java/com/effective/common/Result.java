@@ -1,7 +1,13 @@
 package com.effective.common;
 
 /**
- * @Description
+ * 规范： 1，controller层专用，不允许往后传递。
+ *       2，Controller只做参数格式的转换
+ *       3，参数不允许出现request，response这些对象
+ *       4，不需要打印日志
+ *
+ *
+ * @Description 接口统一返回值
  * @author:caiyuan
  * @date:2019/11/21 0021
  * @ver:1.0
